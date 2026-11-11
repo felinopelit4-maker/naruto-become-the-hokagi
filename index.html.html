@@ -1,0 +1,519 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naruto - The Way of a Shinobi</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #131111;
+    color: white;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+:root {
+    --orange: #ff681c;
+    --red: #a91f1f;
+    --dark: #151313;
+}
+
+/* NAVIGATION */
+nav {
+    background: #100d0d;
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--orange);
+}
+
+.logo {
+    color: var(--orange);
+    font-size: 25px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: var(--orange);
+}
+
+/* HOME */
+#home {
+    min-height: 600px;
+    padding: 120px 8%;
+    display: flex;
+    align-items: center;
+    background:
+    linear-gradient(90deg, #080808 15%, rgba(0,0,0,.65)),
+    url("naruto-hero.jpg") center/cover,
+    linear-gradient(135deg, #43190e, #100b0b);
+}
+
+.hero h1 {
+    color: var(--orange);
+    font-size: clamp(55px, 9vw, 100px);
+    font-weight: 900;
+}
+
+.hero h2 {
+    font-size: 35px;
+    font-style: italic;
+}
+
+.hero p {
+    max-width: 550px;
+    color: #ddd;
+    margin: 20px 0;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: var(--red);
+    transform: translateY(-3px);
+}
+
+/* GENERAL SECTIONS */
+section {
+    padding: 75px 8%;
+}
+
+.title {
+    font-size: 38px;
+    margin-bottom: 25px;
+}
+
+.title span {
+    color: var(--orange);
+}
+
+/* ABOUT */
+.about {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.about img {
+    width: 350px;
+    max-width: 100%;
+    border-radius: 15px;
+    border: 2px solid var(--orange);
+}
+
+.about-text {
+    flex: 1;
+    min-width: 260px;
+}
+
+.about-text p {
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+/* CHARACTERS */
+#characters {
+    background: #171111;
+}
+
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: #241a17;
+    border: 1px solid #74351e;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: .3s;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--orange);
+}
+
+.card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.card h3 {
+    color: var(--orange);
+    padding: 10px;
+}
+
+.card p {
+    color: #ccc;
+    padding: 0 12px 18px;
+    font-size: 14px;
+}
+
+/* LIFE LESSONS */
+.lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.lesson {
+    background: var(--dark);
+    padding: 25px;
+    border-left: 4px solid var(--orange);
+    border-radius: 10px;
+}
+
+.lesson h3 {
+    color: var(--orange);
+    margin-bottom: 8px;
+}
+
+/* REFLECTION */
+#reflection {
+    background:
+    linear-gradient(rgba(0,0,0,.88), rgba(0,0,0,.9)),
+    url("naruto-reflection.jpg") center/cover,
+    #24120d;
+}
+
+.reflection-box {
+    max-width: 850px;
+    background: rgba(30,20,16,.8);
+    border: 1px solid var(--orange);
+    padding: 35px;
+    border-radius: 15px;
+}
+
+.reflection-box p {
+    color: #ddd;
+    margin-bottom: 15px;
+}
+
+/* CONCLUSION */
+.conclusion {
+    text-align: center;
+    background: #171111;
+}
+
+.conclusion h2 {
+    color: var(--orange);
+    font-size: 40px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #080808;
+    border-top: 2px solid var(--orange);
+    color: #aaa;
+}
+
+footer span {
+    color: var(--orange);
+}
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+    nav {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    nav div:last-child {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    nav a {
+        margin-left: 0;
+    }
+
+    .character-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 500px) {
+    .character-grid,
+    .lesson-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+    }
+
+    section {
+        padding: 55px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="logo">🍃 NARUTO</div>
+
+    <div>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#characters">Characters</a>
+        <a href="#lessons">Lessons</a>
+        <a href="#reflection">Reflection</a>
+        <a href="#conclusion">Conclusion</a>
+    </div>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+    <div class="hero">
+        <h1>NARUTO</h1>
+        <h2>The Way of a Shinobi</h2>
+
+        <p>
+            "Never give up, that's my ninja way!"
+
+            Naruto teaches us to believe in ourselves,
+            work hard, and never give up on our dreams.
+        </p>
+
+        <a href="#about" class="btn">Explore More →</a>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="about">
+
+        <img src="pictures/img.Naruto1.0.jpg" alt="Naruto Uzumaki">
+
+        <div class="about-text">
+            <h2 class="title">
+                About <span>Naruto</span>
+            </h2>
+
+            <p>
+                Naruto Uzumaki is a young ninja who dreams
+                of becoming the Hokage, the strongest leader
+                of the Hidden Leaf Village.
+            </p>
+
+            <p>
+                Despite being lonely and facing many
+                challenges, he never gives up on his dreams.
+                He continues to work hard and protect
+                the people he loves.
+            </p>
+
+            <p>
+                His journey shows that determination,
+                friendship, and courage can help us
+                overcome life's difficulties.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- CHARACTERS -->
+<section id="characters">
+
+    <h2 class="title">
+        Main <span>Characters</span>
+    </h2>
+
+    <div class="character-grid">
+
+        <div class="card">
+            <img src="pictures/img.Naruto.jpg" alt="Naruto">
+            <h3>Naruto Uzumaki</h3>
+            <p>Brave, hardworking, and determined.</p>
+        </div>
+
+        <div class="card">
+            <img src="pictures/img.Sasuke.jpg" alt="Sasuke">
+            <h3>Sasuke Uchiha</h3>
+            <p>Powerful, intelligent, and talented.</p>
+        </div>
+
+        <div class="card">
+            <img src="pictures/img.Sakura.jpg" alt="Sakura">
+            <h3>Sakura Haruno</h3>
+            <p>Strong, caring, and supportive.</p>
+        </div>
+
+        <div class="card">
+            <img src="pictures/img.Kakashi.jpg" alt="Kakashi">
+            <h3>Kakashi Hatake</h3>
+            <p>Wise, skilled, and a great teacher.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- LIFE LESSONS -->
+<section id="lessons">
+
+    <h2 class="title">
+        Life <span>Lessons</span>
+    </h2>
+
+    <div class="lesson-grid">
+
+        <div class="lesson">
+            <h3>🔥 Never Give Up</h3>
+            <p>
+                Always continue fighting for your dreams
+                even when life becomes difficult.
+            </p>
+        </div>
+
+        <div class="lesson">
+            <h3>🤝 Friendship</h3>
+            <p>
+                True friends support and help us
+                become better people.
+            </p>
+        </div>
+
+        <div class="lesson">
+            <h3>💪 Hard Work</h3>
+            <p>
+                Success comes through patience,
+                discipline, and dedication.
+            </p>
+        </div>
+
+        <div class="lesson">
+            <h3>❤️ Courage</h3>
+            <p>
+                Be brave enough to face challenges
+                and learn from your mistakes.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- PERSONAL REFLECTION -->
+<section id="reflection">
+
+    <div class="reflection-box">
+
+        <h2 class="title">
+            My Personal <span>Reflection</span>
+        </h2>
+
+        <p>
+            Watching Naruto has changed the way I think
+            about life. It teaches me to never give up
+            even when I experience problems and failures.
+        </p>
+
+        <p>
+            Naruto inspires me to become stronger,
+            work harder, and believe in myself.
+            His story reminds me that success does not
+            happen immediately. It requires patience,
+            effort, and determination.
+        </p>
+
+        <p>
+            I also learned the importance of friendship,
+            kindness, and helping other people.
+            Because of Naruto, I understand that
+            challenges are part of life and that
+            I should always keep moving forward.
+        </p>
+
+    </div>
+</section>
+
+<!-- CONCLUSION -->
+<section id="conclusion" class="conclusion">
+
+    <h2>Believe in Yourself!</h2>
+
+    <p>
+        Naruto is more than just an anime.
+        It is a story about dreams, friendship,
+        courage, and never giving up.
+        Its lessons will always inspire me
+        to become a better person.
+    </p>
+
+    <br>
+
+    <a href="#home" class="btn">Back to Top ↑</a>
+
+</section>
+
+<!-- WEBSITE CREATOR -->
+<section class="creator-section">
+    <h2>Website Creator</h2>
+
+    <div class="creator-card">
+        <h3>Felino C. Pelit Jr.</h3>
+        <p>Student | ITPEF 1</p>
+        <p>Lab Workshop • AY 2026–2027</p>
+        <p>Created with Passion ❤️</p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>
+        Created by: <span>Your Name</span>
+    </p>
+
+    <p>
+        ITPEF 1 | Lab Workshop | AY 2026–2027
+    </p>
+
+    <p>Believe in Yourself — Like Naruto 🍃</p>
+</footer>
+
+</body>
+</html>
